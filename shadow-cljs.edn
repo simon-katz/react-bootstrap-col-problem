@@ -8,6 +8,7 @@
  {:client
   {:target :browser
    :compiler-options {:infer-externs :auto}
+   :js-options {:entry-keys ["module" "browser" "main"]}
    :modules {:client {:entries [ui]
                       :init-fn ui/render}}
    :dev {:output-dir "resources/pub-dev/compiler-output/client/js"

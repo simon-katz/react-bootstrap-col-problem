@@ -4,9 +4,9 @@
    ;; These are OK:
    ["react-bootstrap/Card"]
    ["react-bootstrap/Row"]
-   ;; This fails with an error:
-   ;; ["react-bootstrap/Col"]
-   ))
+   ;; This was failing with an error, but OK after adding `:js-options` in
+   ;; shadow-cljs.edn
+   ["react-bootstrap/Col"]))
 
 (defn ^:dev/after-load render []
   (dom/render [:div "Grrrr!"]
