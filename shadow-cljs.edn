@@ -1,0 +1,16 @@
+{:source-paths
+ ["src"]
+
+ :dependencies
+ [[reagent "1.1.0"]]
+
+ :builds
+ {:client
+  {:target :browser
+   :compiler-options {:infer-externs :auto}
+   :modules {:client {:entries [ui]
+                      :init-fn ui/render}}
+   :dev {:output-dir "resources/pub-dev/compiler-output/client/js"
+         :asset-path "/compiler-output/client/js"}
+   :devtools {:http-root "resources/pub-dev"
+              :http-port 8280}}}}
