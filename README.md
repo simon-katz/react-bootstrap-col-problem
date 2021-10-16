@@ -1,5 +1,7 @@
 # Problems with "react-bootstrap/Col" in react-bootstrap 2.0.0-rc.0
 
+(See the shadow-cljs issue at https://github.com/thheller/shadow-cljs/issues/948)
+
 This is a shadow-cljs project.
 
 To reproduce the problem:
