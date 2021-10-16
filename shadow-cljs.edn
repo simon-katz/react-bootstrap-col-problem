@@ -14,4 +14,4 @@
    :dev {:output-dir "resources/pub-dev/compiler-output/client/js"
          :asset-path "/compiler-output/client/js"}
    :devtools {:http-root "resources/pub-dev"
-              :http-port 8280}}}}
+              :http-port 8281}}}}
