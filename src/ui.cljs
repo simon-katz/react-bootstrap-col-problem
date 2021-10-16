@@ -14,9 +14,9 @@
   ;;  #js {"$$typeof" #object[Symbol(react.forward_ref)], :render #object[Function]}]
   )
 
-(def Col (r/adapt-react-class rb-Col))
+(def Col       (r/adapt-react-class rb-Col))
 (def Container (r/adapt-react-class rb-Container))
-(def Row (r/adapt-react-class rb-Row))
+(def Row       (r/adapt-react-class rb-Row))
 
 (def demo-col-error? false)
 
