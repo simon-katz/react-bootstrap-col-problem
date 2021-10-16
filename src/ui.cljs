@@ -1,18 +1,10 @@
 (ns ui
   (:require
-   ["react-bootstrap/Col"       :as rb-Col]
+   ["react-bootstrap/Col"       :default rb-Col]
    ["react-bootstrap/Container" :as rb-Container]
    ["react-bootstrap/Row"       :as rb-Row]
    [reagent.core :as r]
    [reagent.dom :as dom]))
-
-(comment
-  [rb-Col rb-Container rb-Row]
-  =>
-  ;; [#js {:__esModule true, :useCol #object[useCol], :default #js {"$$typeof" #object[Symbol(react.forward_ref)], :render #object[Function]}}
-  ;;  #js {"$$typeof" #object[Symbol(react.forward_ref)], :render #object[Function], :defaultProps #js {:fluid false}}
-  ;;  #js {"$$typeof" #object[Symbol(react.forward_ref)], :render #object[Function]}]
-  )
 
 (def Col       (r/adapt-react-class rb-Col))
 (def Container (r/adapt-react-class rb-Container))
