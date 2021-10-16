@@ -1,30 +1,36 @@
-# A Problem I'm Having with react-bootstrap 2.0.0-rc.0
-
-
-**NB: Problem fixed by adding `:js-options {:entry-keys ["module" "browser" "main"]}` to shadow-cljs.edn**
-
-See [answer to my question about this on Slack](https://clojurians.slack.com/archives/C0620C0C8/p1634243261179700?thread_ts=1634212661.178000&cid=C0620C0C8). Thanks to [p-himik](https://clojurians.slack.com/team/U2FRKM4TW)
-
-**Old notes:**
-
-This repo demonstrates a problem I'm having with react-bootstrap 2.0.0-rc.0
-
-When I try to load "react-bootstrap/Col", I get the following error:
-
-```
-ExceptionInfo: failed to convert sources
-Caused by:
-NullPointerException: NAME $jscomp 66:8  [length: 96] [source_file: node_modules/react-bootstrap/cjs/Col.js]
-```
-
-There's no problem loading other react-bootstrap modules (is that the right word?).
+# Problems with "react-bootstrap/Col" in react-bootstrap 2.0.0-rc.0
 
 This is a shadow-cljs project.
 
-To reproduce:
+To reproduce the problem:
 
-* Run `_scripts/clean-dev; _scripts/cljs-dev-auto`.
+Run the following:
 
-* When compilation is complete, point a browser at http://localhost:8280/
+```
+npm install
+_scripts/clean-dev; _scripts/cljs-dev-auto
+```
 
-* To cause the error, edit the file "src/ui.cljs": uncomment the require of ["react-bootstrap/Col"].
+When compilation is complete, point a browser at http://localhost:8281/
+
+In the `ui` namespace, there’s a var called demo-col-error? If false, the UI displays with no error. If true, I get the following error:
+
+```
+Uncaught TypeError: $jscomp.makeIterator is not a function
+    at eval (Col.js:66)
+    at renderWithHooks (react-dom.development.js:14986)
+    at updateForwardRef (react-dom.development.js:17045)
+    at beginWork (react-dom.development.js:19099)
+    at HTMLUnknownElement.callCallback (react-dom.development.js:3946)
+    at Object.invokeGuardedCallbackImpl (react-dom.development.js:3995)
+    at invokeGuardedCallback (react-dom.development.js:4057)
+    at beginWork$1 (react-dom.development.js:23965)
+    at performUnitOfWork (react-dom.development.js:22780)
+    at workLoopSync (react-dom.development.js:22708)
+```
+
+A second problem (not sure if this is related): If I remove `["react-bootstrap/Col" :default rb-Col]` from the `(:require ...)` form, and also remove the things that use rb-Col, then initial from-scratch compilation is fine, but if I then re-introduce the require of "react-bootstrap/Col" incremental recompilation gives the following error:
+
+```
+NullPointerException: NAME $jscomp 66:8  [length: 96] [source_file: node_modules/react-bootstrap/cjs/Col.js]
+```
