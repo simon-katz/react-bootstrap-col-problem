@@ -14,7 +14,7 @@
 
 (defn ^:dev/after-load render []
   (dom/render (if demo-col-error?
-                ;; This gives "React.createElement: type is invalid -- expected a string"
+                ;; This gives: Uncaught TypeError: $jscomp.makeIterator is not a function
                 [Container
                  [Row
                   [Col "1 of 1"]]]
