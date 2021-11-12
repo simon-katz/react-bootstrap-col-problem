@@ -8,7 +8,8 @@
  {:client
   {:target :browser
    :compiler-options {:infer-externs :auto}
-   ;; :js-options {:entry-keys ["module" "browser" "main"]}
+   :js-options {;; Temporary -- see https://github.com/thheller/shadow-cljs/issues/948
+                :force-library-injection #{"es6/util/makeiterator"}}
    :modules {:client {:entries [ui]
                       :init-fn ui/render}}
    :dev {:output-dir "resources/pub-dev/compiler-output/client/js"
